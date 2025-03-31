@@ -68,9 +68,9 @@ class InventoryPage(BasePage):
         assert self.page.locator(self.inventory_sorting).is_visible(), "Sorting dropdown is not visible"
         selected_text = self.page.evaluate(
             """() => {
-            const select = document.querySelector('[data-test="product-sort-container"]');
-            return select.selectedOptions[0].text;
-        }"""
+                const select = document.querySelector('[data-test="product-sort-container"]');
+                return select.selectedOptions[0].text;
+            }"""
         )
         assert selected_text == "Name (A to Z)", f"Expected 'Name (A to Z)', but got '{selected_text}'"
         for index, product in enumerate(self.products):
