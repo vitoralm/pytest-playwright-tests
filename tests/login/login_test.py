@@ -14,6 +14,7 @@ def test_login_page_is_loaded(page):
     login_page.default_login_page_should_be()
     time.sleep(3)
 
+
 @pytest.mark.all
 @pytest.mark.smoke
 @pytest.mark.login
@@ -24,6 +25,7 @@ def test_locked_out_user_error(page):
     users = Users()
     login_page.do_login(users.locked_user)
     login_page.assert_login_error(login_page.texts.LOCKED_OUT_USER_ERROR)
+
 
 @pytest.mark.all
 @pytest.mark.smoke
