@@ -1,7 +1,6 @@
-.results/
+results/*
 venv/
 failures
-
 
 __pycache__
 .pytest_cache

@@ -4,3 +4,4 @@ class Texts(object):
         self.LOGIN_USERNAME_HELPER = "Accepted usernames are:standard_userlocked_out_userproblem_userperformance_glitch_usererror_uservisual_user"
         self.LOGIN_PASSWORD_HELPER = "Password for all users:secret_sauce"
         self.LOGIN_BUTTON = "Login"
+        self.LOCKED_OUT_USER_ERROR = "Epic sadface: Sorry, this user has been locked out."

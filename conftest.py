@@ -3,6 +3,7 @@ from playwright.sync_api import sync_playwright
 import os
 import allure
 
+
 @pytest.fixture(scope="session")
 def local_debug(request):
     """Adding 'local_debug' parameter."""

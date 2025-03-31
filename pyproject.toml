@@ -3,6 +3,7 @@ addopts = "-v --strict-markers"
 markers = [
     "login: Login tests",
     "smoke: Smoke tests",
+    "errors: All tests that perform some error",
     "all: All existing tests for Swag Labs"
 ]
 
