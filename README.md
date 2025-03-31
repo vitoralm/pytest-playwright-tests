@@ -1,4 +1,4 @@
-This project is meant to showcase the Pytest framework with Playwright to run E2E tests in a real QA daily-work scenario.
+This project is meant to showcase the Pytest framework with Playwright lib to run E2E tests in a real QA daily-work scenario with a effective Allure Report.
 
 This project use Allure Report, so in order to view results you should install `allure` CLI, please view `https://allurereport.org/docs/install-for-macos/`
 
