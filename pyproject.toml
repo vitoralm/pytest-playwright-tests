@@ -6,7 +6,7 @@ markers = [
     "errors: All tests that perform some error",
     "test_login_page_is_loaded: simple test if the login page is properly loaded",
     "test_locked_out_user_error: user cant login because is locked out",
-    "test_standard_user: user can perform a ",
+    "test_standard_user: standard user submits a simple new order",
     "all: All existing tests for Swag Labs"
 ]
 
