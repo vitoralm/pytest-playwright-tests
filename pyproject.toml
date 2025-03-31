@@ -1,9 +1,12 @@
 [tool.pytest.ini_options]
-addopts = "-v --strict-markers"
+addopts = "-v -s --strict-markers"
 markers = [
     "login: Login tests",
     "smoke: Smoke tests",
     "errors: All tests that perform some error",
+    "test_login_page_is_loaded: simple test if the login page is properly loaded",
+    "test_locked_out_user_error: user cant login because is locked out",
+    "test_standard_user: user can perform a ",
     "all: All existing tests for Swag Labs"
 ]
 
