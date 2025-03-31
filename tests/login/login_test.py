@@ -12,7 +12,7 @@ import time
 def test_login_page_is_loaded(page):
     login_page = LoginPage(page)
     login_page.default_login_page_should_be()
-
+    time.sleep(3)
 
 @pytest.mark.all
 @pytest.mark.smoke
@@ -28,7 +28,6 @@ def test_locked_out_user_error(page):
 @pytest.mark.all
 @pytest.mark.smoke
 @pytest.mark.login
-@pytest.mark.errors
 @pytest.mark.test_standard_user
 def test_standard_user(page):
     login_page = LoginPage(page)
