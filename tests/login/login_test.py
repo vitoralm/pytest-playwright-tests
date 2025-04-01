@@ -1,5 +1,6 @@
 from pages.login_page import LoginPage
 from pages.inventory_page import InventoryPage
+from pages.cart_page import CartPage
 from utilities.users.users import Users
 import pytest
 import time
@@ -35,6 +36,14 @@ def test_locked_out_user_error(page):
 def test_standard_user(page):
     login_page = LoginPage(page)
     inventory_page = InventoryPage(page)
+    cart_page = CartPage(page)
     users = Users()
+    product_name = inventory_page.products[4]["name"]
     login_page.do_login(users.problem_user)
     inventory_page.default_inventory_page_should_be()
+    inventory_page.add_product_to_cart(product_name)
+    inventory_page.assert_remove_button_is_visible(product_name)
+    inventory_page.navigate_to_cart_page()
+    cart_page.default_cart_page_should_be()
+    cart_page.assert_remove_button_is_visible(product_name)
+    cart_page.click_checkout_button
