@@ -26,6 +26,7 @@ FYI tested app is https://www.saucedemo.com/
 
 NOTE: tests can run with chromium (default), webkit and firefox
 
+Running tests using a Docker container
 
-TODO:
-- Run tests using Docker container
+- `docker build -t playwright-tests .`
+- `docker run --rm -v $(pwd)/results:/app/results playwright-tests`

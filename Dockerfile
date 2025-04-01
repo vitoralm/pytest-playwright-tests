@@ -23,6 +23,6 @@ RUN poetry run playwright install --with-deps
 
 RUN mkdir -p /results
 
-CMD ["poetry", "run", "task", "test", "all"]
+CMD ["poetry", "run", "task", "test_all"]
 
 
