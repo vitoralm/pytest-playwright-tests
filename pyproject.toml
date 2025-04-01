@@ -18,7 +18,7 @@ authors = [
     {name = "Vitor Almeida Pires",email = "vitoralmeidapires@gmail.com"}
 ]
 readme = "README.md"
-requires-python = ">=3.13,<4.0"
+requires-python = ">=3.10,<4.0"
 dependencies = [
     "pytest (>=8.3.5,<9.0.0)",
     "allure-pytest (>=2.13.5,<3.0.0)"
@@ -41,6 +41,7 @@ build-backend = "poetry.core.masonry.api"
 default_task = "poetry run pytest --alluredir=./results "
 test_headed = "task default_task --headed -m "
 test = "task default_task -m "
+test_all = "task default_task -m all"
 test_webkit = "task default_task --browser webkit -m "
 test_firefox = "task default_task --browser firefox -m "
 test_local = "task default_task --local_debug --headed -m "
