@@ -1,5 +1,6 @@
 FROM mcr.microsoft.com/playwright:v1.51.1
 
+# set the directory to /app to all the playwright tests
 WORKDIR /app
 
 RUN apt-get update && \
@@ -15,14 +16,15 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+# copy source code
 COPY . .
 
+# install poetry dependencies for tests without packaging
 RUN poetry install --no-root
 
+# run playwright installation
 RUN poetry run playwright install --with-deps
 
 RUN mkdir -p /results
 
-CMD ["poetry", "run", "task", "test_all"]
-
-
+ENTRYPOINT ["/bin/bash", "/app/start.sh"]
