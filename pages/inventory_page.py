@@ -35,9 +35,10 @@ class InventoryPage(BasePage):
                 self.page.locator(self.get_element_locator_by_index(self.inventory_item_price, index)).text_content()
                 == product["price"]
             )
-            expect(
-                self.page.locator(f'{self.inventory_item_description}[normalize-space()="{product['description']}"]')
-            ).to_be_visible()
+            item_description_locator = "{}[normalize-space()='{}']".format(
+                self.inventory_item_description, product["description"]
+            )
+            expect(self.page.locator(item_description_locator)).to_be_visible()
             assert (
                 self.page.locator(
                     self.get_element_locator_by_index(f"{self.inventory_item_button}", index)
@@ -47,18 +48,6 @@ class InventoryPage(BasePage):
 
     def add_product_to_cart(self, product_name):
         self.click_element(f"{self.inventory_item_name}[text()='{product_name}']{self.add_cart_from_item_name}")
-
-    def assert_remove_button_is_visible(self, product_name):
-        remove_button_locator = f"{self.inventory_item_name}[text()='{product_name}']{self.add_cart_from_item_name}"
-        remove_button = self.page.locator(remove_button_locator)
-        remove_button.wait_for(state="visible")
-        expect(remove_button).to_be_visible()
-        assert (
-            self.page.locator(
-                f"{self.inventory_item_name}[text()='{product_name}']{self.add_cart_from_item_name}"
-            ).text_content()
-            == self.products[0]["buttonRemoveDescription"]
-        )
 
     def assert_remove_button_is_visible(self, product_name):
         remove_button_locator = f"{self.inventory_item_name}[text()='{product_name}']{self.add_cart_from_item_name}"

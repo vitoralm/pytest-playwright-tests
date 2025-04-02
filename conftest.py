@@ -11,9 +11,19 @@ def local_debug(request):
 
 
 def pytest_addoption(parser):
-    parser.addoption("--headed", action="store_true", help="Run browser in headed mode", default=False)
+    parser.addoption(
+        "--headed",
+        action="store_true",
+        help="Run browser in headed mode",
+        default=False,
+    )
     parser.addoption("--local_debug", action="store_true", help="Local debug session", default=False)
-    parser.addoption("--browser", action="store", default="chromium", help="Browser to use: chromium, firefox, webkit")
+    parser.addoption(
+        "--browser",
+        action="store",
+        default="chromium",
+        help="Browser to use: chromium, firefox, webkit",
+    )
 
 
 @pytest.fixture(scope="function")
