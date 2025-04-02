@@ -5,7 +5,6 @@ from pages.checkout_page import CheckoutPage
 from pages.checkout_complete_page import CheckoutCompletePage
 from utilities.users.users import JOHN_DOE
 import pytest
-import time
 
 
 @pytest.mark.all

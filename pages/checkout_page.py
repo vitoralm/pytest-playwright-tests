@@ -65,7 +65,10 @@ class CheckoutPage(BasePage):
             item_price = item.locator(self.inventory_item_price).text_content()
 
             # Find matching product and verify
-            matching_product = next((product for product in self.products if product["name"] == item_name), None)
+            matching_product = next(
+                (product for product in self.products if product["name"] == item_name),
+                None,
+            )
 
             assert matching_product is not None, f"Product {item_name} not found in products list"
             assert item_price == matching_product["price"]
