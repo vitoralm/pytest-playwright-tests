@@ -29,7 +29,7 @@ NOTE: tests can run with chromium (default), webkit and firefox
 Running tests using a Docker container
 
 - `docker build . -f Dockerfile -t vitoralm/pytest-playwright-tests:latest`
-- `docker run --rm -v $(pwd)/results:/app/results playwright-tests -e BROWSER=webkit -e TEST=all`
+- `docker run --rm -e BROWSER="webkit" -e TEST="test_standard_user_submit_simple_order" -v $(pwd)/results:/app/results vitoralm/pytest-playwright-tests:latest`
 - `docker push vitoralm/pytest-playwright-tests:latest`
 
 
