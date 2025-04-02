@@ -28,5 +28,11 @@ NOTE: tests can run with chromium (default), webkit and firefox
 
 Running tests using a Docker container
 
-- `docker build -t playwright-tests .`
-- `docker run --rm -v $(pwd)/results:/app/results playwright-tests`
+- `docker build . -f Dockerfile -t vitoralm/pytest-playwright-tests:latest`
+- `docker run --rm -e BROWSER="webkit" -e TEST="test_standard_user_submit_simple_order" -v $(pwd)/results:/app/results vitoralm/pytest-playwright-tests:latest`
+- `docker push vitoralm/pytest-playwright-tests:latest`
+
+
+This project uses pre-commit hooks
+
+`pre-commit install` to enable to hooks from the yaml local file. It will trigger black and flake8

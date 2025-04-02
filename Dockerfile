@@ -26,5 +26,6 @@ RUN poetry install --no-root
 RUN poetry run playwright install --with-deps
 
 RUN mkdir -p /results
-
+ENV TEST="all"
+ENV BROWSER="chromium"
 ENTRYPOINT ["/bin/bash", "/app/start.sh"]

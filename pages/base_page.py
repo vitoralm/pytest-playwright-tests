@@ -12,7 +12,7 @@ class BasePage:
         self.page_title = "//span[@data-test='title']"
         self.inventory_item_name = "//div[@data-test='inventory-item-name']"
         self.inventory_item_price = "//div[@data-test='inventory-item-price']"
-        self.inventory_item_description = "//div[@data-test='inventory-item-desc']"
+        self.inventory_item_description = '//div[@data-test="inventory-item-desc"]'
 
         self.products = [
             {
