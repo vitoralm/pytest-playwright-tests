@@ -35,7 +35,7 @@ class InventoryPage(BasePage):
                 self.page.locator(self.get_element_locator_by_index(self.inventory_item_price, index)).text_content()
                 == product["price"]
             )
-            item_description_locator = "{}[normalize-space()='{}']".format(
+            item_description_locator = '{}[normalize-space()="{}"]'.format(
                 self.inventory_item_description, product["description"]
             )
             expect(self.page.locator(item_description_locator)).to_be_visible()
