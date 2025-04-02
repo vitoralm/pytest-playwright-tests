@@ -1,5 +1,7 @@
 from utilities.texts.texts import Texts
-from playwright.sync_api import expect
+from retry import retry
+from playwright.sync_api import TimeoutError
+
 
 class BasePage:
     def __init__(self, page):
@@ -67,7 +69,7 @@ class BasePage:
 
         return_locator = "({})[{}]".format(locator_xpath, index)
         return return_locator
-    
+
     def navigate_to_cart_page(self):
         """
         Clicks the cart button.
@@ -77,3 +79,13 @@ class BasePage:
         self.page.wait_for_timeout(1000)
         assert self.page.url == f"{self.base_url}/cart.html"
 
+    @retry(TimeoutError, tries=3, delay=1)
+    def click_element(self, locator, until_disappears=False):
+        """
+        Clicks the element specified by the locator.
+        """
+        self.page.locator(locator).click()
+        self.page.wait_for_load_state("networkidle")
+
+        if until_disappears:
+            self.page.locator(locator).wait_for(state="detached")

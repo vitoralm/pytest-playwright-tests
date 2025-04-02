@@ -13,8 +13,8 @@ class LoginPage(BasePage):
         self.login_password = 'div[data-test="login-password"]'
 
     def default_login_page_should_be(self):
-        assert self.page.title() == "Swag Labs"
-        expect(self.page.locator(self.logo_div, has_text=self.texts.LOGIN_PAGE_TITLE)).to_be_visible()
+        assert self.page.title() == self.texts.APP_TITLE
+        expect(self.page.locator(self.logo_div, has_text=self.texts.APP_TITLE)).to_be_visible()
         expect(self.page.locator(self.password_input)).to_be_visible()
         expect(self.page.locator(self.username_input)).to_be_visible()
         expect(self.page.locator(self.login_button)).to_be_visible()

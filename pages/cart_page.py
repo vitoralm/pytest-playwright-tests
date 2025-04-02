@@ -12,14 +12,11 @@ class CartPage(BasePage):
         self.cart_item_description = "//div[@class='inventory_item_desc']"
         self.cart_item_button = "//div[@class='cart_button']"
         self.checkout_button = "//button[@data-test='checkout']"
-        self.add_cart_from_item_name = (
-            "/ancestor::a/following-sibling::div[@class='item_pricebar']/button"
-        )
+        self.add_cart_from_item_name = "/ancestor::a/following-sibling::div[@class='item_pricebar']/button"
         self.cart_description_label = "//div[@data-test='cart-desc-label']"
         self.cart_quantity_label = " //div[@data-test='cart-quantity-label']"
-        self.cart_continue_shopping_button = 'div//[@data-test="continue-shopping"]'
+        self.cart_continue_shopping_button = '//button[@data-test="continue-shopping"]'
         self.cart_button_checkout = "//button[@data-test='checkout']"
-
 
     def default_cart_page_should_be(self):
         expect(self.page.locator(self.cart_title)).to_be_visible()
@@ -40,7 +37,6 @@ class CartPage(BasePage):
             ).text_content()
             == self.products[0]["buttonRemoveDescription"]
         )
-    
+
     def click_checkout_button(self):
-        self.page.locator(self.cart_button_checkout).click()
-        self.page.wait_for_load_state("networkidle")
+        self.click_element(self.cart_button_checkout)

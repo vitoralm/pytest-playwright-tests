@@ -46,7 +46,7 @@ class InventoryPage(BasePage):
             )
 
     def add_product_to_cart(self, product_name):
-        self.page.locator(f"{self.inventory_item_name}[text()='{product_name}']{self.add_cart_from_item_name}").click()
+        self.click_element(f"{self.inventory_item_name}[text()='{product_name}']{self.add_cart_from_item_name}")
 
     def assert_remove_button_is_visible(self, product_name):
         remove_button_locator = f"{self.inventory_item_name}[text()='{product_name}']{self.add_cart_from_item_name}"
