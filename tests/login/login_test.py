@@ -25,4 +25,3 @@ def test_locked_out_user_error(page):
     username = JOHN_DOE.usernames["locked"]
     login_page.do_login(username)
     login_page.assert_login_error(login_page.texts.LOCKED_OUT_USER_ERROR)
-

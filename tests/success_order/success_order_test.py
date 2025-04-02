@@ -2,9 +2,11 @@ from pages.login_page import LoginPage
 from pages.inventory_page import InventoryPage
 from pages.cart_page import CartPage
 from pages.checkout_page import CheckoutPage
+from pages.checkout_complete_page import CheckoutCompletePage
 from utilities.users.users import JOHN_DOE
 import pytest
 import time
+
 
 @pytest.mark.all
 @pytest.mark.smoke
@@ -14,6 +16,7 @@ def test_standard_user_submit_simple_order(page):
     inventory_page = InventoryPage(page)
     cart_page = CartPage(page)
     checkout_page = CheckoutPage(page)
+    checkout_complete_page = CheckoutCompletePage(page)
     username = JOHN_DOE.usernames["standard"]
     first_name = JOHN_DOE.first_name
     last_name = JOHN_DOE.last_name
@@ -38,3 +41,5 @@ def test_standard_user_submit_simple_order(page):
     checkout_page.default_checkout_page_step_two_should_be(
         payment_method, shipping_method, product_price, taxes, order_total
     )
+    checkout_page.click_finish_order()
+    checkout_complete_page.default_checkout_complete_page_should_be()

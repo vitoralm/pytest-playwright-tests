@@ -13,8 +13,8 @@
                 "-v",
                 "-s",
                 "-k",
-                "test_standard_user",
-                "tests/login/login_test.py",
+                "test_standard_user_submit_simple_order",
+                "tests/success_order/success_order_test.py",
                 "--headed"
             ],
             "console": "integratedTerminal",

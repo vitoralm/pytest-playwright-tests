@@ -13,3 +13,9 @@ class Texts(object):
         self.ORDER_TOTAL_VALUE = "Total: {}"
         self.CANCEL = "Cancel"
         self.FINISH = "Finish"
+        self.CHECKOUT_COMPLETE_PAGE_TITLE = "Checkout: Complete!"
+        self.CHECKOUT_COMPLETE_TITLE = "Thank you for your order!"
+        self.CHECKOUT_COMPLETE_TEXT = (
+            "Your order has been dispatched, and will arrive just as fast as the pony can get there!"
+        )
+        self.CHECKOUT_COMPLETE_BACK_HOME_BUTTON = "Back Home"

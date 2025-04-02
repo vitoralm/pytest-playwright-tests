@@ -111,3 +111,6 @@ class CheckoutPage(BasePage):
 
     def click_cancel_button(self):
         self.click_element(self.checkout_cancel_button)
+
+    def click_finish_order(self):
+        self.click_element(self.checkout_finish_button)
