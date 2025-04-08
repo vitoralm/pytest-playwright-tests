@@ -19,3 +19,4 @@ class Texts(object):
             "Your order has been dispatched, and will arrive just as fast as the pony can get there!"
         )
         self.CHECKOUT_COMPLETE_BACK_HOME_BUTTON = "Back Home"
+        self.INVALID_CREDENTIALS_ERROR = "Epic sadface: Username and password do not match any user in this service"

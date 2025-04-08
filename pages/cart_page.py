@@ -7,7 +7,9 @@ class CartPage(BasePage):
         super().__init__(page)
         self.url = "/cart.html"
         self.cart_title = self.page_title
-        self.cart_item_name = "//div[@class='inventory_item_name']"
+        self.cart_item_name = self.inventory_item_name
+        self.cart_item_price = self.inventory_item_price
+        self.cart_item_description = self.inventory_item_description
         self.cart_item_price = "//div[@class='inventory_item_price']"
         self.cart_item_description = "//div[@class='inventory_item_desc']"
         self.cart_item_button = "//div[@class='cart_button']"
@@ -27,7 +29,7 @@ class CartPage(BasePage):
         expect(self.page.locator(self.cart_continue_shopping_button)).to_have_text("Continue Shopping")
 
     def assert_remove_button_is_visible(self, product_name):
-        remove_button_locator = f"{self.inventory_item_name}[text()='{product_name}']{self.add_cart_from_item_name}"
+        remove_button_locator = f"{self.cart_item_name}[text()='{product_name}']{self.add_cart_from_item_name}"
         remove_button = self.page.locator(remove_button_locator)
         remove_button.wait_for(state="visible")
         expect(remove_button).to_be_visible()
@@ -40,3 +42,13 @@ class CartPage(BasePage):
 
     def click_checkout_button(self):
         self.click_element(self.cart_button_checkout)
+
+    def assert_product_details(self, product_name):
+        item_name_locator = f"{self.cart_item_name}[text()='{product_name}']"
+        item_description_locator = "//div[@class='inventory_item_desc']"
+        expect(self.page.locator(item_name_locator)).to_be_visible()
+        expect(self.page.locator(item_description_locator)).to_be_visible()
+
+    def remove_product_from_cart(self, product_name):
+        remove_button_locator = f"//button[@data-test='remove-{product_name.lower().replace(' ', '-')}']"
+        self.click_element(remove_button_locator)

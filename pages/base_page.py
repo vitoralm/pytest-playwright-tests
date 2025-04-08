@@ -10,10 +10,11 @@ class BasePage:
         self.base_url = "https://www.saucedemo.com"
         self.cart_button = '//a[@data-test="shopping-cart-link"]'
         self.page_title = "//span[@data-test='title']"
+        self.inventory_item_card = "/ancestor::div[@data-test='inventory-item-description']"
+        self.inventory_item_label = "/ancestor::div[@class='inventory_item_label']"
         self.inventory_item_name = "//div[@data-test='inventory-item-name']"
         self.inventory_item_price = "//div[@data-test='inventory-item-price']"
         self.inventory_item_description = '//div[@data-test="inventory-item-desc"]'
-
         self.products = [
             {
                 "name": "Sauce Labs Backpack",
@@ -89,3 +90,13 @@ class BasePage:
 
         if until_disappears:
             self.page.locator(locator).wait_for(state="detached")
+
+    def get_product_locators_by_name(self, product_name, *locators):
+        item_locator = self.get_product_by_name(product_name)
+        for locator in locators:
+            item_locator += locator
+        return item_locator
+
+    def get_product_by_name(self, product_name):
+        item_locator = f"{self.inventory_item_name}[text()='{product_name}']"
+        return item_locator

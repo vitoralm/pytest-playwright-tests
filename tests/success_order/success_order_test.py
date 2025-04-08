@@ -5,11 +5,14 @@ from pages.checkout_page import CheckoutPage
 from pages.checkout_complete_page import CheckoutCompletePage
 from utilities.users.users import JOHN_DOE
 import pytest
+from qase.pytest import qase
 
 
 @pytest.mark.all
 @pytest.mark.smoke
 @pytest.mark.test_standard_user_submit_simple_order
+@qase.id(4)
+@qase.title("test_standard_user_submit_simple_order")
 def test_standard_user_submit_simple_order(page):
     login_page = LoginPage(page)
     inventory_page = InventoryPage(page)

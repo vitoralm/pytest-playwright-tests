@@ -28,4 +28,5 @@ RUN poetry run playwright install --with-deps
 RUN mkdir -p /results
 ENV TEST="all"
 ENV BROWSER="chromium"
+ENV QASE_API_TOKEN="qase_api_token"
 ENTRYPOINT ["/bin/bash", "/app/start.sh"]

@@ -117,3 +117,7 @@ class CheckoutPage(BasePage):
 
     def click_finish_order(self):
         self.click_element(self.checkout_finish_button)
+
+    def assert_error_message_is_displayed(self):
+        error_message_locator = "//h3[@data-test='error']"
+        expect(self.page.locator(error_message_locator)).to_be_visible()
