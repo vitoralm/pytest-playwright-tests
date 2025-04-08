@@ -2,7 +2,7 @@ This project is meant to showcase the Pytest framework with Playwright lib to ru
 
 This project use Allure Report, so in order to view results you should install `allure` CLI, please view `https://allurereport.org/docs/install-for-macos/`
 
-Install poetry using `pipx install poetry using pipx`
+Install poetry using `pipx install poetry`
 
 View official docs for more details
 - https://pipx.pypa.io/stable/installation/
@@ -31,10 +31,8 @@ Running tests using a Docker container
 - `docker build . -f Dockerfile -t vitoralm/pytest-playwright-tests:latest`
 - `docker run --rm -e BROWSER="webkit" -e TEST="all" -e QASE_API_TOKEN=${QASE_API_TOKEN} -v $(pwd)/results:/app/results vitoralm/pytest-playwright-tests:latest`
 - `docker push vitoralm/pytest-playwright-tests:latest`
-
+- https://hub.docker.com/repository/docker/vitoralm/pytest-playwright-tests/tags
 
 This project uses pre-commit hooks
 
 `pre-commit install` to enable to hooks from the yaml local file. It will trigger black and flake8
-
-- https://hub.docker.com/repository/docker/vitoralm/pytest-playwright-tests/tags
