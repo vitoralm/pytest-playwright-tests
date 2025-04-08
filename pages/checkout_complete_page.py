@@ -13,7 +13,6 @@ class CheckoutCompletePage(BasePage):
     def default_checkout_complete_page_should_be(self):
         expect(self.page.locator(self.checkout_complete_title)).to_be_visible()
         expect(self.page.locator(self.checkout_complete_title)).to_have_text(self.texts.CHECKOUT_COMPLETE_PAGE_TITLE)
-
         expect(self.page.locator(self.complete_header)).to_be_visible()
         expect(self.page.locator(self.complete_text)).to_be_visible()
         assert self.page.locator(self.complete_header).text_content() == self.texts.CHECKOUT_COMPLETE_TITLE

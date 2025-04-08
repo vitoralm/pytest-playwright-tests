@@ -13,8 +13,7 @@
                 "-v",
                 "-s",
                 "-k",
-                "test_standard_user_submit_simple_order",
-                "tests/success_order/success_order_test.py",
+                "test_verify_product_details",
                 "--headed"
             ],
             "console": "integratedTerminal",

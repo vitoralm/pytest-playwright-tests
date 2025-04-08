@@ -17,7 +17,7 @@ class InventoryPage(BasePage):
     def default_inventory_page_should_be(self):
         self.page.wait_for_load_state("networkidle")
         self.page.locator(self.inventory_title).wait_for(state="visible")
-        assert self.page.title() == "Swag Labs"
+        assert self.page.title() == self.texts.APP_TITLE
         assert self.page.url == f"{self.base_url}{self.url}"
         expect(self.page.locator(self.inventory_title)).to_be_visible()
         expect(self.page.locator(self.inventory_title)).to_have_text("Products")
@@ -30,11 +30,11 @@ class InventoryPage(BasePage):
         )
         assert selected_text == "Name (A to Z)", f"Expected 'Name (A to Z)', but got '{selected_text}'"
         for index, product in enumerate(self.products):
-            expect(self.page.locator(f"{self.inventory_item_name}[text()='{product['name']}']")).to_be_visible()
+            expect(self.page.locator(self.get_product_by_name(product["name"]))).to_be_visible()
+            item_price_locator = self.get_element_locator_by_index(self.inventory_item_price, index)
             assert (
-                self.page.locator(self.get_element_locator_by_index(self.inventory_item_price, index)).text_content()
-                == product["price"]
-            )
+                self.page.locator(item_price_locator).text_content() == product["price"]
+            ), "expected {} but got {}".format(product["price"], self.page.locator(item_price_locator).text_content())
             item_description_locator = '{}[normalize-space()="{}"]'.format(
                 self.inventory_item_description, product["description"]
             )
@@ -60,3 +60,21 @@ class InventoryPage(BasePage):
             ).text_content()
             == self.products[0]["buttonRemoveDescription"]
         )
+
+    def assert_product_details(self, product_name, product_description, product_price):
+        item_name_locator = self.get_product_by_name(product_name)
+        item_description_locator = self.get_product_locators_by_name(
+            product_name, self.inventory_item_label, self.inventory_item_description
+        )
+        item_price_locator = self.get_product_locators_by_name(
+            product_name, self.inventory_item_card, self.inventory_item_price
+        )
+        expect(self.page.locator(item_name_locator)).to_be_visible()
+        expect(self.page.locator(item_description_locator)).to_be_visible()
+        expect(self.page.locator(item_price_locator)).to_be_visible()
+        assert product_description == self.page.locator(item_description_locator).text_content()
+        assert product_price == self.page.locator(item_price_locator).text_content()
+
+    def remove_product_from_cart(self, product_name):
+        remove_button_locator = f"{self.get_product_by_name(product_name)}{self.add_cart_from_item_name}"
+        self.click_element(remove_button_locator)

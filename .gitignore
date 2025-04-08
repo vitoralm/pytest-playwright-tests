@@ -4,3 +4,4 @@ failures
 
 __pycache__
 .pytest_cache
+qase.lock
