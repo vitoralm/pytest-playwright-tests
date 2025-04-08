@@ -23,3 +23,7 @@ jobs:
 
       - name: Push Docker image to Docker Hub
         run: docker push vitoralm/pytest-playwright-tests:latest
+
+concurrency:
+  group: build-master-image
+  cancel-in-progress: true
