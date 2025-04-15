@@ -1,6 +1,5 @@
 [tool.pytest.ini_options]
 addopts = "-v -s --strict-markers "
-qase=true
 
 markers = [
     "login: Login tests",
@@ -46,6 +45,9 @@ dependencies = [
     "retry (>=0.9.2,<0.10.0)",
     "pre (>=1.3.0,<2.0.0)",
     "qase-pytest (>=6.2.2,<7.0.0)",
+    "pytest-reporter-html1 (>=0.9.2,<0.10.0)",
+    "pytest-xdist (>=3.6.1,<4.0.0)",
+    "pytest-rerunfailures (>=15.0,<16.0)",
 ]
 
 [tool.poetry]
@@ -65,11 +67,13 @@ requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.taskipy.tasks]
-default_task = "poetry run pytest --alluredir=./results "
+default_task = "poetry run pytest -n auto --reruns 2 --alluredir=./results "
+test_html_reporter1 = "task default_task --template=html1/index.html --report=report.html -m "
 test_headed = "task default_task --headed -m "
 test = "task default_task -m "
 test_all = "task default_task -m all"
 test_webkit = "task default_task --browser webkit -m "
+test_webkit_html_report1 = "task default_task --browser webkit --template=html1/index.html --report=report.html -m "
 test_firefox = "task default_task --browser firefox -m "
 test_local = "task default_task --local_debug --headed -m "
 lint = "black --line-length 120 ."
